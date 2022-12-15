@@ -22,16 +22,13 @@ Graph::Graph(int V) {
     for (int i = 0; i < this->V; i++) this->visited[i] = false;
 }
 void Graph::addEdge(int v, int w) {
-    adj[v].push_back(w);    //agrega w a la posicion v
-                            //adj[w].push_back(v); si fuera no dirigido
+    adj[v].push_back(w); 
 }
-
 
 class Game{
 private:
     Texture textura0, textura1, textura2, textura3, textura4, textura5, textura6, textura7, textura8, textura9, textura10, textura11;
     Texture textura12, textura13, textura14, textura15, textura16, textura17, textura18;
-
     Sprite sprite0, sprite1, sprite2, sprite3, sprite4, sprite5, sprite6;
     Music Piano;    Font Fuente;
 public:
@@ -79,8 +76,7 @@ public:
         T01.setPosition(10, 515); T02.setPosition(10, 515); T03.setPosition(10, 545);
         while (window.isOpen()) {
             Event event;
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {z = 1;};
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 7;  window.close(); Select(next);};
@@ -103,7 +99,6 @@ public:
                 window.draw(T03);
                 window.display();
             }
-
         }
     };
     void Stage1() {
@@ -114,8 +109,7 @@ public:
         T01.setPosition(10, 515); T02.setPosition(10, 515); T03.setPosition(10, 570); T04.setPosition(10, 515);
         while (window.isOpen()) {
             Event event;
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) { z=z+3;};
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 1;  window.close(); Select(next); };
@@ -248,8 +242,7 @@ public:
         T01.setPosition(10, 515); T02.setPosition(10, 515); T03.setPosition(10, 515); T04.setPosition(10, 515);
         while (window.isOpen()) {
             Event event;
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) { z = z + 4; };
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 4;  window.close(); Select(next); };
@@ -297,8 +290,7 @@ public:
         T01.setPosition(330, 515); T02.setPosition(10, 550);
         while (window.isOpen()) {
             Event event;
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                     window.close();
                     exit(0);
@@ -320,8 +312,7 @@ public:
         T01.setPosition(330, 515); T02.setPosition(10, 550);
         while (window.isOpen()) {
             Event event;
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                     window.close();
                     exit(0);
@@ -343,8 +334,7 @@ public:
         T01.setPosition(330, 515); T02.setPosition(10, 550);
         while (window.isOpen()) {
             Event event;
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                     window.close();
                     exit(0);
@@ -366,8 +356,7 @@ public:
         T01.setPosition(330, 515); T02.setPosition(10, 550);
         while (window.isOpen()) {
             Event event;
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                     window.close();
                     exit(0);
@@ -397,40 +386,21 @@ public:
             G.addEdge(4, 5);
             G.addEdge(4, 6);
             G.addEdge(4, 8);
-
             G.DFS(scr);
         }        
         cout << "[" << scr << "] a ";
+        key = 1;
         switch (scr) {
-        case 0: key = 1;
-            Stage0();
-            break;
-        case 1: key = 1;
-            Stage1();
-            break;
-        case 2: key = 1;
-            Stage2();
-            break;
-        case 3: key = 1;
-            Stage3();
-            break;
-        case 4: key = 1;
-            Stage4();
-            break;
-        case 5: key = 1;
-            Stage5();
-            break;
-        case 6: key = 1;
-            Stage6();
-            break;
-        case 7: key = 1;
-            Stage7();
-            break;
-        case 8: key = 1;
-            Stage8();
-            break;
-        default: cout << "Error en la llamada a Stage" << endl;
-            break;
+        case 0: Stage0(); break;
+        case 1: Stage1(); break;
+        case 2: Stage2(); break;
+        case 3: Stage3(); break;
+        case 4: Stage4(); break;
+        case 5: Stage5(); break;
+        case 6: Stage6(); break;
+        case 7: Stage7(); break;
+        case 8: Stage8(); break;
+        default: cout << "Error en la llamada a Stage" << endl; break;
         }
         return v;
     };
@@ -441,8 +411,7 @@ public:
         Tmenu.setPosition(250, 540); Tinst.setPosition(10, 510);
         while (window.isOpen()) {
             Event event;
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 Piano.setVolume(20); Piano.play();
                 if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::J)) { next = 0; window.close(); Select(next);};
@@ -460,22 +429,15 @@ public:
 };
 //Funcion de los grafos
 void Graph::DFS(int v) {
-    while (keyV == 0) {
-        this->visited[v] = true;    //marca el nodo actual como visitado e imprimelo
-        if (v <= 4) cout << "[" << v + 1 << "]" << endl;
-        if (v >= 5) cout << "[" << v << "]" << endl;
-        keyV = 1;
-        list<int>::iterator it;
-        for (it = adj[v].begin(); it != adj[v].end(); ++it) { //nodos adyacentes
-            if (!this->visited[*it]) {
-                DFS(*it);
-            }
+    Game game;
+    this->visited[v] = true;
+    list<int>::iterator it;
+    for (it = adj[v].begin(); it != adj[v].end(); ++it) { //nodos adyacentes
+        if (!this->visited[*it]) {
+            game.Select(*it);
         }
     }
-    Game game;
-    game.Select(v);
 }
-
 //Dialogos a la rapida D:
 void Game::Dialog() {
     dialogos[0][0] = "Jugar: j     Salir: Esc";
@@ -506,9 +468,6 @@ void Game::Dialog() {
     dialogos[6][1] = "El niño te apuñalo ya que estaba aterrado.\n      El miedo mata más que mil espadas.";
     dialogos[6][2] = "Tras esconderte usado el perfume logras evitar al monstruo y salir de \nla mazmorra por la puerta de la mansión.";
     dialogos[9][0] = "FINAL BUENO";
-
-
-
 };
 int main() {   
     Game game;
