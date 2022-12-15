@@ -57,7 +57,7 @@ public:
         textura15.loadFromFile("IMG/pokimon.png");
         textura16.loadFromFile("IMG/dbm.png");
         textura17.loadFromFile("IMG/Ftraicion.png");
-        textura18.loadFromFile("IMG/Luna.png");
+        textura18.loadFromFile("IMG/libertad.png");
         Piano.openFromFile("Sound/Piano.ogg");
         Piano.setLoop(true);
         Fuente.loadFromFile("mplus-1m-regular.ttf");
@@ -315,7 +315,7 @@ public:
     };
     void Stage6() {
         RenderWindow window(VideoMode(800, 620), "Stage 6");
-        sprite0.setTexture(textura18); sprite0.setPosition(0, 0);
+        sprite0.setTexture(textura18); sprite0.setPosition(0, 50);
         Text T01(dialogos[9][0], Fuente, 25), T02(dialogos[6][2], Fuente, 20);
         T01.setPosition(330, 515); T02.setPosition(10, 550);
         while (window.isOpen()) {
@@ -493,7 +493,7 @@ void Game::Dialog() {
     dialogos[3][1] = "Derrotarlos: z       Buscar una ruta alterna: x";
     dialogos[3][2] = "Te topas con una gran cantidad de monstruos y eres rodeado.";
     dialogos[8][0] = "FINAL MALO";
-    dialogos[8][1] = "Piensa mejor antes de actuar.";
+    dialogos[8][1] = "La mazmorra es un lugar peligroso.\n     Piensa mejor antes de actuar.";
     dialogos[4][0] = "Tras derrotar a los lobos sientes que brota un poder de tu interior, \npuedes decidir si el poder te dará poder mágico o superfuerza.";
     dialogos[4][1] = "Realmente no tendrá ningún impacto en el resto de la historia, \npero así iba en el guión.";
     dialogos[4][2] = "Magia: z     Fuerza: x";
@@ -503,9 +503,9 @@ void Game::Dialog() {
     dialogos[5][1] = "El niño se detiene y lo alcanzas, sigue sus ojos hasta abajo de\n las escaleras dónde te encuentras con un monstruo, el cual no está seguro \nde cómo describir.";
     dialogos[5][2] = "El monstruo los ve y comienza a subir, el niño al verlo huye \nmientras ves qué se vacía una pequeña botella encima, al cabo de unos segundos \nel viento te hace oler una refrescante fragancia, el niño se roció perfume \npara camuflar su olor.";
     dialogos[5][3] = "Perseguir al niño: z   \nPelear con el monstruo para la huida del niño: x    \nBuscar un perfume: v";
-    dialogos[6][1] = "El miedo mata más que mil espadas.";
-    dialogos[6][2] = "Ya vi porque esta porqueria estaba tirada.";
-    dialogos[9][0] = "FINAL ¿?";
+    dialogos[6][1] = "El niño te apuñalo ya que estaba aterrado.\n      El miedo mata más que mil espadas.";
+    dialogos[6][2] = "Tras esconderte usado el perfume logras evitar al monstruo y salir de \nla mazmorra por la puerta de la mansión.";
+    dialogos[9][0] = "FINAL BUENO";
 
 
 
