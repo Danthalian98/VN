@@ -84,7 +84,7 @@ public:
                 if (event.type == sf::Event::Closed) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {z = 1;};
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 7;  window.close(); Select(next);};
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) { next = 1;  window.close(); Select(next);};
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) { next = 0;  window.close(); Select(next);};
             }
             if (z == 0) {
                 window.clear();
@@ -118,7 +118,7 @@ public:
             {
                 if (event.type == sf::Event::Closed) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) { z=z+3;};
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 2;  window.close(); Select(next); };
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 1;  window.close(); Select(next); };
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) { z = 99; };
             }
             if (z == 0) {
@@ -171,7 +171,7 @@ public:
             {
                 if (event.type == sf::Event::Closed) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) { z = z + 3;};
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 3;  window.close(); Select(next); };
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 2;  window.close(); Select(next); };
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) { z = 99; };
             }
             if (z == 0) {
@@ -209,7 +209,7 @@ public:
                 if (event.type == sf::Event::Closed) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z)|| sf::Keyboard::isKeyPressed(sf::Keyboard::X)) { z = z + 3; };
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)) { next = 4;  window.close(); Select(next); };
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)) { next = 3;  window.close(); Select(next); };
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)) { next = 8;  window.close(); Select(next); };
             }
             if (z == 0) {
@@ -252,7 +252,7 @@ public:
             {
                 if (event.type == sf::Event::Closed) window.close();
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) { z = z + 4; };
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 5;  window.close(); Select(next); };
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { next = 4;  window.close(); Select(next); };
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) { next = 8;  window.close(); Select(next); };
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)) { next = 6;  window.close(); Select(next); };
             }
@@ -384,52 +384,54 @@ public:
     };
     int Select(int v) {
         scr = v;
-        
-            cout << "[" << scr << "] a ";
-            switch (scr) {
-            case 0: key = 1;
-                Stage0();
-                break;
-            case 1: key = 1;
-                Stage1();
-                break;
-            case 2: key = 1;
-                Stage2();
-                break;
-            case 3: key = 1;
-                Stage3();
-                break;
-            case 4: key = 1;
-                Stage4();
-                break;
-            case 5: key = 1;
-                Stage5();
-                break;
-            case 6: key = 1;
-                Stage6();
-                break;
-            case 7: key = 1;
-                Stage7();
-                break;
-            case 8: key = 1;
-                Stage8();
-                break;
-            default: cout << "Error en la llamada a Stage" << endl;
-                break;
-            }
-        
-        key = 0;
-        Graph G(V);
-        G.addEdge(0, 7);
-        G.addEdge(0, 1);
-        G.addEdge(1, 2);
-        G.addEdge(2, 3);
-        G.addEdge(2, 8);
-        G.addEdge(3, 4);
-        G.addEdge(3, 5);
-        G.addEdge(4, 8);
-        G.DFS(scr);
+        while (key==1){
+            key = 0;
+            Graph G(V);
+            G.addEdge(0, 1);
+            G.addEdge(0, 7);
+            G.addEdge(1, 2);
+            G.addEdge(2, 3);
+            G.addEdge(2, 8);
+            G.addEdge(3, 4);
+            G.addEdge(3, 8);
+            G.addEdge(4, 5);
+            G.addEdge(4, 6);
+            G.addEdge(4, 8);
 
+            G.DFS(scr);
+        }        
+        cout << "[" << scr << "] a ";
+        switch (scr) {
+        case 0: key = 1;
+            Stage0();
+            break;
+        case 1: key = 1;
+            Stage1();
+            break;
+        case 2: key = 1;
+            Stage2();
+            break;
+        case 3: key = 1;
+            Stage3();
+            break;
+        case 4: key = 1;
+            Stage4();
+            break;
+        case 5: key = 1;
+            Stage5();
+            break;
+        case 6: key = 1;
+            Stage6();
+            break;
+        case 7: key = 1;
+            Stage7();
+            break;
+        case 8: key = 1;
+            Stage8();
+            break;
+        default: cout << "Error en la llamada a Stage" << endl;
+            break;
+        }
         return v;
     };
     void Menu() {
@@ -460,7 +462,8 @@ public:
 void Graph::DFS(int v) {
     while (keyV == 0) {
         this->visited[v] = true;    //marca el nodo actual como visitado e imprimelo
-        cout << "[" << v << "]" << endl;
+        if (v <= 4) cout << "[" << v + 1 << "]" << endl;
+        if (v >= 5) cout << "[" << v << "]" << endl;
         keyV = 1;
         list<int>::iterator it;
         for (it = adj[v].begin(); it != adj[v].end(); ++it) { //nodos adyacentes
